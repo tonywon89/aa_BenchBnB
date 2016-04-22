@@ -6,7 +6,7 @@ var ApiUtil = {
       url: "api/benches",
       type: "GET",
       success: function(benches) {
-        ServerActions.receiveBenches(benches);
+        ServerActions.receiveAllBenches(benches);
       }
     })
   }
