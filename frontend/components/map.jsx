@@ -12,8 +12,25 @@ var Map = React.createClass({
 
     this.map = new google.maps.Map(mapDOMNode, mapOptions);
     this.map.addListener('idle', function () {
-      ClientActions.fetchAllBenches();
-    });
+      var LatLngBounds = this.map.getBounds();
+
+      var northEast = {
+        lat: LatLngBounds.getNorthEast().lat(),
+        lng: LatLngBounds.getNorthEast().lng()
+      };
+
+      var southWest = {
+        lat: LatLngBounds.getSouthWest().lat(),
+        lng: LatLngBounds.getSouthWest().lng()
+      };
+
+      var bounds = {
+        northEast: northEast,
+        southWest: southWest
+      };
+
+      ClientActions.fetchBenches(bounds);
+    }.bind(this));
 
     this.listener = BenchStore.addListener(this._onChange);
   },
@@ -28,7 +45,6 @@ var Map = React.createClass({
           map: this.map,
           title: bench.description
         });
-        // marker.setMap(this.map);
       }
     }
   },

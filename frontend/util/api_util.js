@@ -1,12 +1,13 @@
 var ServerActions = require('../actions/server_actions');
 
 var ApiUtil = {
-  fetchAllBenches: function () {
+  fetchBenches: function (bounds) {
     $.ajax({
       url: "api/benches",
       type: "GET",
+      data: { bounds: bounds },
       success: function(benches) {
-        ServerActions.receiveAllBenches(benches);
+        ServerActions.receiveBenches(benches);
       }
     })
   }

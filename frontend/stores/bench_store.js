@@ -11,6 +11,7 @@ BenchStore.all = function () {
 }
 
 var addBenches = function (benches) {
+  _benches = {};
   benches.forEach(function(bench) {
     _benches[bench.id] = bench;
   });

@@ -10,7 +10,6 @@ var Index = React.createClass({
 
   componentDidMount: function () {
     this.listener = BenchStore.addListener(this._onChange);
-
   },
 
   componentWillUnmount: function () {
