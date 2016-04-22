@@ -21,10 +21,23 @@ var Index = React.createClass({
   },
 
   render: function () {
+    var benches = [];
+
+    if (this.state.benches) {
+      var storedBenches = this.state.benches;
+      Object.keys(storedBenches).forEach(function(id) {
+        benches.push(storedBenches[parseInt(id)]);
+      });
+    }
+
+    benches = benches.map(function(bench) {
+      return <li key={bench.id}>{bench.description}</li>;
+    });
+
     return (
-      <div>
-        This is the index
-      </div>
+      <ul>
+        {benches}
+      </ul>
     );
   }
 });
