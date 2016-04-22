@@ -3,13 +3,14 @@ var BenchStore = require("../stores/bench_store");
 var ClientActions = require("../actions/client_actions");
 
 var Map = React.createClass({
+
   componentDidMount: function () {
     var mapDOMNode = this.refs.map;
     var mapOptions = {
       center: {lat: 37.7758, lng: -122.435},
       zoom: 13
     };
-
+    this.markers = [];
     this.map = new google.maps.Map(mapDOMNode, mapOptions);
     this.map.addListener('idle', function () {
       var LatLngBounds = this.map.getBounds();
@@ -36,21 +37,32 @@ var Map = React.createClass({
   },
 
   _onChange: function () {
+    this.markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+
+    this.markers = [];
     var benches = BenchStore.all();
+
     for (var id in benches) {
       if (benches.hasOwnProperty(id)) {
         var bench = benches[id];
-         var marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: {lat: bench.lat, lng: bench.lng },
           map: this.map,
           title: bench.description
         });
+        this.markers.push(marker);
       }
     }
   },
 
   componentWillUnmount: function () {
     this.listener.remove();
+  },
+
+  removeMarkers: function (currentBenches) {
+
   },
 
   render: function () {
@@ -60,5 +72,6 @@ var Map = React.createClass({
     );
   }
 });
+
 
 module.exports = Map;
