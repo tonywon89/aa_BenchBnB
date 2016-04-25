@@ -78,6 +78,7 @@ var Map = React.createClass({
       pathname: "benches/new",
       query: coords
     });
+    
   },
 
   render: function () {

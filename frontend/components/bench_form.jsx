@@ -8,8 +8,8 @@ var BenchForm = React.createClass({
       //TODO Change default values
       description: "",
       seating: 2,
-      lat: 0,
-      lng: 0
+      lat: this.props.location.query.lat,
+      lng: this.props.location.query.lng
     };
   },
 
@@ -68,14 +68,16 @@ var BenchForm = React.createClass({
           <input type="number"
                  step="any"
                  onChange={this.changeLat}
-                 value={this.state.lat}/>
+                 value={this.state.lat}
+                 disabled="true"/>
         </label>
 
         <label> Longitude
           <input type="number"
                  step="any"
                  onChange={this.changeLng}
-                 value={this.state.lng}/>
+                 value={this.state.lng}
+                 disabled="true"/>
         </label>
         <input type="submit" value="Create Bench" />
       </form>
