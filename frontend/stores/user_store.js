@@ -9,13 +9,25 @@ var _authErrors = [];
 
 var UserStore = new Store(dispatcher);
 
+var resetErrors = function (errors) {
+  alert("resetErrors!");
+  _authErrors = errors;
+  UserStore.__emitChange();
+};
+
+var resetCurrentUser = function (currentUser) {
+  alert("resetCurrentUser!!!");
+  _currentUser = currentUser;
+  UserStore.__emitChange();
+};
+
 UserStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case ErrorConstants.ERRORS_RECEIVED:
-      alert("UserStore errors!");
+      resetErrors(payload.errors);
       break;
     case UserConstants.CURRENT_USER_RECEIVED:
-      alert("UserStore Current User");
+      resetCurrentUser(payload.currentUser);
       break;
   }
 };
