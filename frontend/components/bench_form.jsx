@@ -1,5 +1,6 @@
 var React = require('react');
 var ClientActions = require('../actions/client_actions');
+var hashHistory = require("react-router").hashHistory;
 
 var BenchForm = React.createClass({
   getInitialState: function () {
@@ -45,6 +46,7 @@ var BenchForm = React.createClass({
       lat: 0.00,
       lng: 0.00
     });
+    hashHistory.push("/");
   },
 
   render: function () {

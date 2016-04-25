@@ -18,7 +18,7 @@ var ApiUtil = {
       url: "api/benches",
       data: { bench: benchData },
       success: function (bench) {
-        alert("The Bench Save!");
+        alert("The Bench Saved!");
       }
     });
   }
