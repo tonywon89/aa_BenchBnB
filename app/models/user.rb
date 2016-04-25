@@ -34,8 +34,8 @@ class User < ActiveRecord::Base
     session_token
   end
 
-  def self.find_by_credentials(nickname, password)
-    user = User.find_by(nickname: nickname )
+  def self.find_by_credentials(username, password)
+    user = User.find_by(username: username)
 
     user && user.is_password?(password) ? user : nil
   end

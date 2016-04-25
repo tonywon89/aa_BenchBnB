@@ -10,8 +10,8 @@ var hashHistory = ReactRouter.hasHistory;
 var Search = require("./components/search");
 var BenchForm = require("./components/bench_form");
 
-//TODO remove these later 
-ApiUtil = require("./util/api_util");
+//TODO remove these later
+UserApiUtil = require("./util/user_api_util");
 var UserStore = require("./stores/user_store");
 
 var App = React.createClass({

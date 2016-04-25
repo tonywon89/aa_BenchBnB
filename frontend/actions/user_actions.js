@@ -1,8 +1,24 @@
-var ApiUtil = require("../util/api_util");
+var UserApiUtil = require("../util/user_api_util");
 
 var UserActions = {
   fetchCurrentUser: function () {
-    ApiUtil.fetchCurrentUser();
+    UserApiUtil.fetchCurrentUser();
+  },
+
+  login: function (user) {
+
+  },
+
+  logout: function (user) {
+
+  },
+
+  create: function (user) {
+
+  },
+
+  destroy: function (user) {
+
   }
 };
 
