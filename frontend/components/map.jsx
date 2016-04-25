@@ -61,10 +61,6 @@ var Map = React.createClass({
     this.listener.remove();
   },
 
-  removeMarkers: function (currentBenches) {
-
-  },
-
   render: function () {
     return (
       <div id="map" ref="map">
