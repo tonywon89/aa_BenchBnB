@@ -7,8 +7,13 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = current_user || nil;
-    render :show
+    @user = current_user
+    if @user
+      render :show
+    else
+      @errors = ["There is no current user"]
+      render :errors, status: 500
+    end
   end
 
 end

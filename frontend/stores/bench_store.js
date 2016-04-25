@@ -8,7 +8,7 @@ var BenchStore = new Store(dispatcher);
 
 BenchStore.all = function () {
   return Object.assign({}, _benches);
-}
+};
 
 var resetBenches = function (benches) {
   _benches = {};
@@ -18,9 +18,10 @@ var resetBenches = function (benches) {
   });
 
   BenchStore.__emitChange();
-}
+};
 
 BenchStore.__onDispatch = function (payload) {
+  console.log("BenchStore");
   switch (payload.actionType) {
     case BenchConstants.BENCHES_RECEIVED:
       resetBenches(payload.benches);

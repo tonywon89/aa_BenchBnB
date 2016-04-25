@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  attr_reader: password
+  attr_reader :password
 
   def password=(password)
     @password = password

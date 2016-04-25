@@ -21,6 +21,21 @@ var ApiUtil = {
         alert("The Bench Saved!");
       }
     });
+  },
+
+  fetchCurrentUser: function () {
+    console.log("We are in APIUtil fetch current user");
+    $.ajax({
+      type: "GET",
+      url: "api/user",
+      success: function (currentUser) {
+        ServerActions.receiveCurrentUser(currentUser);
+      },
+
+      error: function (errors) {
+        ServerActions.receiveErrors(errors);
+      }
+    });
   }
 };
 
