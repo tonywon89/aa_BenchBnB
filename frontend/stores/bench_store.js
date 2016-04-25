@@ -10,18 +10,20 @@ BenchStore.all = function () {
   return Object.assign({}, _benches);
 }
 
-var addBenches = function (benches) {
+var resetBenches = function (benches) {
   _benches = {};
+
   benches.forEach(function(bench) {
     _benches[bench.id] = bench;
   });
+
   BenchStore.__emitChange();
 }
 
 BenchStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case BenchConstants.BENCHES_RECEIVED:
-      addBenches(payload.benches);
+      resetBenches(payload.benches);
       break;
   }
 };
