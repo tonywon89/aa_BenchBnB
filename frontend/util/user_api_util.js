@@ -29,15 +29,45 @@ var UserApiUtil = {
   },
 
   logout: function (user) {
-
+    $.ajax({
+      type: "DELETE",
+      url: "api/session",
+      data: { user: user },
+      success: function (currentUser) {
+        alert("Logout was successful!");
+      },
+      error: function (errors) {
+        alert("Logout Failed");
+      }
+    });
   },
 
   create: function (user) {
-
+    $.ajax({
+      type: "POST",
+      url: "api/user",
+      data: { user: user },
+      success: function (createdUser) {
+        alert("User created!");
+      },
+      error: function (errors) {
+        alert("User not created");
+      }
+    });
   },
 
-  destroy: function (user) {
-
+  destroy: function (id) {
+    $.ajax({
+      type: "DELETE",
+      url: "api/user",
+      data: { id: id },
+      success: function (deletedUser) {
+        alert("User deleted!");
+      },
+      error: function (errors) {
+        alert("User not deleted");
+      }
+    });
   }
 };
 

@@ -4,7 +4,7 @@ class Api::SessionsController < ApplicationController
     username = params[:user][:username]
     password = params[:user][:password]
     @user = User.find_by_credentials(username, password)
-    
+
     if @user
       login!(@user)
       render "api/users/show"
@@ -15,6 +15,13 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    logout!
+    if current_user
+      @user = current_user
+      logout!
+      render "api/users/show"
+    else
+      @errors = ["There is no user logged in"]
+      render "api/users/errors", status: 500
+    end
   end
 end

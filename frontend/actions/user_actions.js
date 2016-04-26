@@ -6,19 +6,19 @@ var UserActions = {
   },
 
   login: function (user) {
-
+    UserApiUtil.login(user);
   },
 
   logout: function (user) {
-
+    UserApiUtil.logout(user);
   },
 
   create: function (user) {
-
+    UserApiUtil.create(user);
   },
 
   destroy: function (user) {
-
+    UserApiUtil.destroy(user);
   }
 };
 
