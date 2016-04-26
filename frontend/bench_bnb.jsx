@@ -9,6 +9,7 @@ var hashHistory = ReactRouter.hasHistory;
 
 var Search = require("./components/search");
 var BenchForm = require("./components/bench_form");
+var LoginForm = require("./components/login_form");
 
 //TODO remove these later
 UserApiUtil = require("./util/user_api_util");
@@ -19,7 +20,9 @@ var App = React.createClass({
     return (
       <div>
         <header><h1>Bench BnB</h1></header>
+        <LoginForm />
         {this.props.children}
+
       </div>
     );
   }
@@ -29,6 +32,7 @@ var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Search} />
     <Route path="/benches/new" component={BenchForm} />
+
   </Route>
 );
 

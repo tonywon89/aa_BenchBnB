@@ -20,24 +20,26 @@ var UserApiUtil = {
       url: "api/session",
       data: { user: user },
       success: function (currentUser) {
-        alert("Login was successful!");
+        alert("Login successful");
+        ServerActions.receiveCurrentUser(currentUser);
       },
       error: function (errors) {
-        alert("Login Failed");
+        ServerActions.receiveErrors(errors);
       }
     });
   },
 
-  logout: function (user) {
+  logout: function () {
     $.ajax({
       type: "DELETE",
       url: "api/session",
-      data: { user: user },
       success: function (currentUser) {
-        alert("Logout was successful!");
+        alert("LogOut Successful!")
+        ServerActions.removeCurrentUser();
       },
       error: function (errors) {
         alert("Logout Failed");
+        ServerActions.receiveErrors(errors);
       }
     });
   },

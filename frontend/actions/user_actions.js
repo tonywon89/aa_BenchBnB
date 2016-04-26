@@ -9,8 +9,8 @@ var UserActions = {
     UserApiUtil.login(user);
   },
 
-  logout: function (user) {
-    UserApiUtil.logout(user);
+  logout: function () {
+    UserApiUtil.logout();
   },
 
   create: function (user) {

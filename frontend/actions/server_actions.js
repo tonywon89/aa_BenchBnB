@@ -23,7 +23,14 @@ var ServerActions = {
       actionType: UserConstants.CURRENT_USER_RECEIVED,
       currentUser: currentUser
     });
+  },
+
+  removeCurrentUser: function () {
+    dispatcher.dispatch({
+      actionType: UserConstants.REMOVE_CURRENT_USER
+    });
   }
+
 };
 
 module.exports = ServerActions;

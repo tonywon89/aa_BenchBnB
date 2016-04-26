@@ -10,15 +10,21 @@ var _authErrors = [];
 var UserStore = new Store(dispatcher);
 
 var resetErrors = function (errors) {
-  alert("resetErrors!");
   _authErrors = errors;
   UserStore.__emitChange();
 };
 
 var resetCurrentUser = function (currentUser) {
-  alert("resetCurrentUser!!!");
   _currentUser = currentUser;
   UserStore.__emitChange();
+};
+
+UserStore.currentUser = function () {
+  return _currentUser;
+};
+
+UserStore.errors = function () {
+  return _authErrors.slice();
 };
 
 UserStore.__onDispatch = function (payload) {
@@ -28,6 +34,10 @@ UserStore.__onDispatch = function (payload) {
       break;
     case UserConstants.CURRENT_USER_RECEIVED:
       resetCurrentUser(payload.currentUser);
+      break;
+    case UserConstants.REMOVE_CURRENT_USER:
+      _currentUser = undefined;
+      UserStore.__emitChange();
       break;
   }
 };

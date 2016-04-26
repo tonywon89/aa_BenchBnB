@@ -3,6 +3,7 @@ var UserActions = require("../actions/user_actions");
 
 var CurrentUserStateMixin = {
   getInitialState: function () {
+
     return {
       currentUser: UserStore.currentUser(),
       errors: UserStore.errors()
@@ -15,6 +16,8 @@ var CurrentUserStateMixin = {
   },
 
   updateUser: function () {
-    this.setState( )
+    this.setState({ currentUser: UserStore.currentUser() });
   }
 };
+
+module.exports = CurrentUserStateMixin;
